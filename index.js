@@ -18,7 +18,7 @@ const setup = async () => {
  await Mongo.setupDb(process.env.MONGO_DB_URI);
 
 app.use(theaters.router);
-//app.use(sessions.router);
+app.use(sessions.router);
 app.use(users.router);
 
  

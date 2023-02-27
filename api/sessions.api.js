@@ -9,7 +9,7 @@ router.get("/sessions",async (req,res) => {
 const queryDb = {};
 if(user_id)
 {
-    queryDb.user_id={$gte:user_id};
+    queryDb.user_id=user_id;
 }
 const docs = await Sessions.find(queryDb);
 return res.status(200).send(docs);

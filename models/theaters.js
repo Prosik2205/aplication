@@ -3,12 +3,12 @@ const {Schema, model} = require('mongoose');
 const schema = new Schema({
 theaterId:{type:Number},
 location:{
-    addres:
+    address:
     {
         street1:{type:String},
         city:{type:String},
         state:{type:String},
-        zipcode:{type:Number},
+        zipcode:{type:String},
     },
     geo:
     {
