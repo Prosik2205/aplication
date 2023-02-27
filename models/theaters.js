@@ -1,7 +1,7 @@
 const {Schema, model} = require('mongoose');
 
 const schema = new Schema({
-theaterID:{type:Number},
+theaterId:{type:Number},
 location:{
     addres:
     {
