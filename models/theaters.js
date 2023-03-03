@@ -13,7 +13,7 @@ location:{
     geo:
     {
         type:{type:String},
-        coordinates:{type:[String]},
+        coordinates:{type:[Number]},
     },
 },
  })
