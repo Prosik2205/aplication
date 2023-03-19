@@ -12,7 +12,7 @@ const func = async () => {
     });
    
     const charactersWithDuplicates = text
-     .match(/^[a-zA-Z]+:/gm);
+     .match(/Triss+:(.*)/gm);
     if (!charactersWithDuplicates) {
      throw new Error('Character names was not found');
     }
@@ -21,6 +21,15 @@ const func = async () => {
       return character.slice(0, -1);
      });
     console.log(characters);
+    fs.writeFileSync("./Triss.txt",characters.toString(),{encoding: 'utf-8'});
+
+
+    
+
+
+
+
+
    };
    
    func();
