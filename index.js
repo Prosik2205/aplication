@@ -1,28 +1,26 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-require('dotenv').config();
-const users = require("./api/users.api")
-const usersLog = require("./api/usersLog.api")
+const fs = require('fs');
 
-console.log(`MONGO_DB_URI:${process.env.MONGO_DB_URI}`);
-
-const Mongo = require('./setup/mongoose');
-
-const app = express();
-app.use(bodyParser.json());
-
-app.use(users);
-
-app.use(usersLog);
-
-const setup = async () => {
-    await Mongo.setupDb(process.env.MONGO_DB_URI);
-
-
-
-    app.listen(process.env.PORT, () => {
-        console.log(`Server was started on ${process.env.PORT}`);
+const func = async () => {
+    const text = await new Promise((res, rej) => {
+     fs.readFile('./scenario.txt', (err, data) => {
+      if (err) {
+       return rej(err);
+      }
+   
+      return res(data.toString());
+     });
     });
-};
-
-setup();
+   
+    const charactersWithDuplicates = text
+     .match(/^[a-zA-Z]+:/gm);
+    if (!charactersWithDuplicates) {
+     throw new Error('Character names was not found');
+    }
+    const characters = charactersWithDuplicates
+     .map(character => {
+      return character.slice(0, -1);
+     });
+    console.log(characters);
+   };
+   
+   func();
