@@ -3,17 +3,23 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const users = require("./api/users.api")
 const usersLog = require("./api/usersLog.api")
+const links = require("./api/links.api")
+const linksGet=require("./api/linksGet.api")
+const short_links = require("./api/short-links.api")
 
 console.log(`MONGO_DB_URI:${process.env.MONGO_DB_URI}`);
 
 const Mongo = require('./setup/mongoose');
 
 const app = express();
+
 app.use(bodyParser.json());
-
 app.use(users);
-
 app.use(usersLog);
+app.use(links);
+app.use(linksGet);
+app.use(short_links);
+
 
 const setup = async () => {
     await Mongo.setupDb(process.env.MONGO_DB_URI);
