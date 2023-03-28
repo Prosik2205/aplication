@@ -1,10 +1,10 @@
 const Router = require('express');
-const { Link } = require('../models/link');
+const { Links } = require('../models/links');
 const { Users } = require('../models/users');
 
 const router = Router();
 
-router.use('/link', async (req, res, next) => {
+router.use('/links', async (req, res, next) => {
   const apiKey = req.header('x-api-key');
 
   const user = await Users.findOne({ apiKey: apiKey });
@@ -16,10 +16,10 @@ router.use('/link', async (req, res, next) => {
   next();
 });
 
-router.get('/link', async (req, res) => {
+router.get('/links', async (req, res) => {
   const { gt, lt } = req.query;
 
-  const link = await Link.find({
+  const links = await Links.find({
     $or: [
       { expiredAt: { $gt: Date(gt) } },
       { expiredAt: { $lt: Date(lt) } },
@@ -28,7 +28,7 @@ router.get('/link', async (req, res) => {
     res.status(400).json(error);
   });
 
-  res.status(200).send(link);
+  res.status(200).send(links);
 });
 
 module.exports = router;
