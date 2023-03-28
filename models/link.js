@@ -9,6 +9,6 @@ const schema = new Schema({
  expiredAt: { type: Date, required: true }
 });
 
-const Links = new model('links', schema, 'links');
+const Link = new model('link', schema, 'link');
 
-module.exports = { Links };
+module.exports = { Link };

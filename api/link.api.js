@@ -1,10 +1,10 @@
 const Router = require('express');
-const { Link } = require('../models/links');
+const { Link } = require('../models/link');
 const { Users } = require('../models/users');
 
 const router = Router();
 
-router.use('/links', async (req, res, next) => {
+router.use('/link', async (req, res, next) => {
   const apiKey = req.header('x-api-key');
 
   const user = await Users.findOne({ apiKey: apiKey });
@@ -16,7 +16,7 @@ router.use('/links', async (req, res, next) => {
   next();
 });
 
-router.post('/links', async (req, res) => {
+router.post('/link', async (req, res) => {
   const { original } = req.body;
 
   const characters = 'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuioplkjhgfdsazxcvbnm';
