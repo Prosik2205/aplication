@@ -19,7 +19,7 @@ router.use('/links', async (req, res, next) => {
 router.post('/links', async (req, res) => {
   const { original } = req.body;
 
-  const characters = 'SomeOne';
+  const characters = 'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuioplkjhgfdsazxcvbnm';
   let cutLink = '';
 
   for (let i = 0; i < 15; i++) {
