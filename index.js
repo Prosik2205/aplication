@@ -60,22 +60,21 @@ const func = async () => {
       
         const characters = {
             Max: "Max",
-            Geralt:"Geralt",
-            Yennefer:"Yennefer",
-            Triss:"Triss"
+            Geralt: "Geralt",
+            Yennefer: "Yennefer",
+            Triss: "Triss"
         };
-     const {Max,Geralt,Yennefer,Triss} = characters;
       
-     for( let i = 0; i < 4; i+=1)
-     {
-       let ab={};
-       for(let j = 0; j <5; j +=1)
-       {
-            ab = text.slice(res.Triss[i].start,res.Triss[i].end);      
-       }
-       console.log(ab);   
-       fs.appendFileSync("./test1.txt",JSON.stringify(ab),{encoding:'utf-8'});
-     }    
+        for (const character in characters) {
+            if (res[character]) {
+                let content = '';
+                for (let i = 0; i < res[character].length; i += 1) {
+                    const ab = text.slice(res[character][i].start, res[character][i].end);
+                    content += ab + '\n';
+                }
+                fs.writeFileSync(`./${character}.txt`, content, { encoding: 'utf-8' });
+            }
+        }   
 
     }
    };
