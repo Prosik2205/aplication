@@ -1,7 +1,6 @@
 const { Schema, model, Types } = require('mongoose');
 
 const schema = new Schema({
- userId: { type: Types.ObjectId, required: true },
  links: {
   original: { type: String, required: true },
   cut: { type: String, required: true, unique: true }
@@ -9,6 +8,6 @@ const schema = new Schema({
  expiredAt: { type: Date, required: true }
 });
 
-const Links = new model('links', schema, 'links');
+const Link = new model('links', schema, 'links');
 
-module.exports = { Links };
+module.exports = { Link };

@@ -1,5 +1,5 @@
 const Router = require('express');
-const { Links } = require('../models/links');
+const { Link } = require('../models/links');
 const { Users } = require('../models/users');
 
 const router = Router();
@@ -19,7 +19,7 @@ router.use('/links', async (req, res, next) => {
 router.get('/links', async (req, res) => {
   const { gt, lt } = req.query;
 
-  const links = await Links.find({
+  const links = await Link.find({
     $or: [
       { expiredAt: { $gt: Date(gt) } },
       { expiredAt: { $lt: Date(lt) } },

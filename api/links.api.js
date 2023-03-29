@@ -1,5 +1,5 @@
 const Router = require('express');
-const { Links } = require('../models/links');
+const { Link } = require('../models/links');
 const { Users } = require('../models/users');
 
 const router = Router();
@@ -29,7 +29,7 @@ router.post('/links', async (req, res) => {
   const currentDate = new Date();
   const expiredAtDate = currentDate.setDate(currentDate.getDate() + 5);
 
-  const links = new Links({
+  const links = new Link({
     'links.original': original,
     'links.cut': cutLinks,
     expiredAt: expiredAtDate
