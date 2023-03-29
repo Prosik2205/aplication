@@ -57,13 +57,25 @@ const func = async () => {
            
         }
         console.log(res);
-        
-      for( let i = 0; i < 6; i+=1)
-      {
-        const ab = text.slice(res.Triss[i].start,res.Triss[i].end);      
-        console.log(ab);          
-      }    
-       
+      
+        const characters = {
+            Max: "Max",
+            Geralt:"Geralt",
+            Yennefer:"Yennefer",
+            Triss:"Triss"
+        };
+     const {Max,Geralt,Yennefer,Triss} = characters;
+      
+     for( let i = 0; i < 4; i+=1)
+     {
+       let ab={};
+       for(let j = 0; j <5; j +=1)
+       {
+            ab = text.slice(res.Triss[i].start,res.Triss[i].end);      
+       }
+       console.log(ab);   
+       fs.appendFileSync("./test1.txt",JSON.stringify(ab),{encoding:'utf-8'});
+     }    
 
     }
    };
