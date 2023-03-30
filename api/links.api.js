@@ -19,12 +19,70 @@ router.use('/links', async (req, res, next) => {
 router.post('/links', async (req, res) => {
   const { original } = req.body;
 
+  
+  let i;
+  while(i!=2)
+  {
   const characters = 'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuioplkjhgfdsazxcvbnm';
   let cutLinks = '';
-
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 15; i++) 
+  {
     cutLinks += characters.charAt(Math.floor(Math.random() * characters.length));
   }
+  const exists = await Link.findOne({ 'link.cut': cutLinks })
+  if (exists) 
+  {
+    i=1;
+  }
+  else
+  {
+    i=2;
+  }
+}
+
+//                 -------------------1----------------------------
+// let exists;
+// do
+//   {
+//   const characters = 'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuioplkjhgfdsazxcvbnm';
+//   let cutLinks = '';
+//   for (let i = 0; i < 15; i++) 
+//   {
+//     cutLinks += characters.charAt(Math.floor(Math.random() * characters.length));
+//   }
+//    exists = await Link.findOne({ 'link.cut': cutLinks })
+// }
+// while(!exists);
+
+
+
+
+
+//                 -------------------2----------------------------
+// let p;
+// do
+// {
+// const characters = 'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuioplkjhgfdsazxcvbnm';
+// let cutLinks = '';
+// for (let i = 0; i < 15; i++) 
+// {
+//   cutLinks += characters.charAt(Math.floor(Math.random() * characters.length));
+// }
+// const exists = await Link.findOne({ 'link.cut': cutLinks })
+//  p=(exists) ? true : false;
+// }
+// while(p==false);
+
+
+
+
+
+
+
+
+
+
+
 
   const currentDate = new Date();
   const expiredAtDate = currentDate.setDate(currentDate.getDate() + 5);
