@@ -1,0 +1,29 @@
+.container{
+  width: 300px;
+  height: 300px;
+  display: block;
+  background-color: aqua;
+}
+
+.selectCity{
+ width: 100px;
+ height: 20px;
+ margin-left: 50px ;
+ justify-content: center;
+}
+
+.plusCity{
+  width: 20px;
+  height: 20px;
+  margin-left: 50px ;
+  justify-content: center;
+}
+
+.way{
+  display: block;
+  background-color: bisque;
+  width: 300px;
+  height: 100px;
+  position: relative;
+  top: 177px;
+}
