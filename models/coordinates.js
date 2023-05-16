@@ -3,9 +3,10 @@ const { Schema, model } = require("mongoose");
 const schema = new Schema({
   cityId: { type: Number },
   nameCity: { type: [String] },
-  coordinates:{
-    x:{type: [Number]},
-    y:{type: [Number]}
+  coordinates:
+  {
+    x:{type:[Number]},
+    y:{type:[Number]}
   }
 });
 

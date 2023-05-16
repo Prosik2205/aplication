@@ -10,7 +10,9 @@ coordinates_x,
 coordinates_y
 } = req.body;
 
-const newCity = new City({nameCity,coordinates_x,coordinates_y});
+
+
+const newCity = new Coordinates({nameCity,coordinates_x,coordinates_y});
 const doc = await newCity.save();
 return res.status(200).send(doc);
 
