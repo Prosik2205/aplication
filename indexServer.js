@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 require("dotenv").config();
+const path = require('path')
 const Coordinates = require("./API/addCoordinates.api")
 const getCoordinates = require("./API/getCoordinates.api")
 
@@ -12,6 +13,7 @@ const Mongo = require("./DB/mongoose");
 
 const app = express();
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, './build')))
 
 const setup = async () => {
   await Mongo.setupDb(process.env.MONGO_DB_URI);
